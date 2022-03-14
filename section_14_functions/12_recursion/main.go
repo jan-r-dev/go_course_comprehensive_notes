@@ -2,21 +2,29 @@ package main
 
 import "fmt"
 
-var x int = 10
-var y int = 1
-
 func main() {
-	recursor()
+	n := factorialRec(4)
+	n2 := factorialLoop(4)
 
-	fmt.Println(y)
+	fmt.Println(n)
+	fmt.Println(n2)
 }
 
-func recursor() {
-	if x != 1 {
-		y += y * (x - 1)
-		x--
-		recursor()
+func factorialRec(n int) int {
+	if n == 0 {
+		return 1
 	}
+	return n * (factorialRec(n - 1))
+
+	// n * (factorial(4 - 1)) * (factorial(3 - 1)) * (factorial(2 - 1)) * 1
 }
 
-// Strangely proud of this one. Figured out solo without understanding recursion or factorials prior to trying.
+func factorialLoop(n int) int {
+	total := 1
+
+	for ; n > 0; n-- {
+		total *= n
+	}
+
+	return total
+}
