@@ -21,4 +21,5 @@ func main() {
 
 func changeMe(p *person) {
 	p.age = 42
+	// (*p).age = 232 This also works
 }
