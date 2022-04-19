@@ -24,16 +24,19 @@ func main() {
 	}
 	people := []person{p1, p2}
 
-	// Marshalling START
+	// Marshal into a byte slice
 	bs, err := json.Marshal(people)
 	if err != nil {
 		fmt.Println("Err:", err)
 	}
 	fmt.Println(string(bs))
-	// Marshalling END
 
+	// Unmarshal into the slice of structs (using a pointer)
 	p3 := []person{}
-	json.Unmarshal(bs, &p3)
+	err = json.Unmarshal(bs, &p3)
+	if err != nil {
+		fmt.Println("Err:", err)
+	}
 	fmt.Println(p3)
 
 }
