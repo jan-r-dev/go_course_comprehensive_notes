@@ -18,12 +18,10 @@ func gensend(c chan<- int) {
 	wg.Add(10)
 
 	for i := 0; i < 10; i++ {
-		go func() {
-			for i := 0; i < 10; i++ {
-				c <- i
-			}
+		go func(i int) {
+			c <- i
 			wg.Done()
-		}()
+		}(i)
 	}
 
 	wg.Wait()
