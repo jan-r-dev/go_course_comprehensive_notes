@@ -21,7 +21,7 @@ func main() {
 
 	bs, err := json.Marshal(p1)
 	if err != nil {
-		log.Println(err)
+		log.Fatal(err)
 	}
 	fmt.Println(string(bs))
 
